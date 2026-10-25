@@ -30,9 +30,18 @@ public class GamePanel extends JPanel implements ActionListener {
         this.setFocusable(true);
         this.addKeyListener(new MyKeyAdapter());
         
-        restartButton.setBounds((SCREEN_WIDTH - 100)/2, 400, 100, 50);
+        restartButton.setBounds((SCREEN_WIDTH - 100)/2, 400, 150, 50);
         restartButton.setFocusable(false);
-        restartButton.addActionListener(this);
+        restartButton.setFont(new Font("Comic Relief", Font.BOLD, 15));
+        
+        restartButton.setBackground(Color.CYAN);
+        restartButton.setForeground(Color.BLUE);
+        restartButton.setOpaque(true);
+        restartButton.setContentAreaFilled(true);
+        restartButton.setBorderPainted(false);
+        restartButton.setFocusPainted(false);
+        
+        restartButton.addActionListener(e -> startGame());
         this.setLayout(null);
         this.add(restartButton);
         
@@ -193,10 +202,6 @@ public class GamePanel extends JPanel implements ActionListener {
             checkCollisions();
         }
         repaint();
-
-        if(e.getSource() == restartButton) {
-            startGame();
-        }
     }
 
     public class MyKeyAdapter extends KeyAdapter {
